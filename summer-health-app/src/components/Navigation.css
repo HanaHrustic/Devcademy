@@ -1,0 +1,67 @@
+.navigation{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 76px;
+    gap: 241px;
+
+    position: absolute;
+    height: 64px;
+    left: 0%;
+    right: 0%;
+    top: 0px;
+    
+    background: #FFFFFF;
+
+    box-shadow: 0px 4px 4px rgba(205, 205, 205, 0.25);
+}
+
+.brand{
+    width: 96px;
+    height: 32px;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 160%;
+    
+    letter-spacing: 0.15px;
+
+    color: #000000;
+}
+
+.nav-link{
+    height: 24px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    letter-spacing: 0.15px;
+    text-decoration-line: underline !important;
+
+    color: #1A3440;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.logout{
+    width: 56px;
+    height: 24px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 170%;
+
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+
+    color: #1A3440;
+}
