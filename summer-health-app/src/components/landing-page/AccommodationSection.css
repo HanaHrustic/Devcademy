@@ -1,0 +1,27 @@
+.accommodation-header{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: #000000;
+}
+
+.all-homes-link{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 26px;
+    letter-spacing: 0.46px;
+    color: #40E0D0 !important;
+}
+
+.accommodation-section{
+    padding-top: 86px;
+}
+
+.accommodation-card{
+    padding-top: 38px;
+}

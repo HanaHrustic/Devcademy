@@ -1,0 +1,25 @@
+.all-locations-link{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 26px;
+    letter-spacing: 0.46px;
+    text-transform: uppercase;
+    color: #40E0D0 !important;
+}
+
+.popular-locations-section{
+    padding-top: 120px;
+}
+
+.popular-locations-title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: #000000;
+    padding-bottom: 41px;
+}
