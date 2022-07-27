@@ -5,15 +5,27 @@ import Container from 'react-bootstrap/Container';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Button } from '@mui/material';
+import StarRateIcon from '@mui/icons-material/StarRate';
+import { amber } from '@mui/material/colors';
 
 const AccommodationDetails: React.FC<{accommodation: {title: string, subtitle: string, description: string, type: string, categorization: number, personCount: number, imageUrl: string, freeCancelation: boolean, price: number, location: string, postalCode: string}}> = (props) => {
+    const stars = [];
+    for(let i = 0; i < props.accommodation.categorization; i++) {
+        stars.push(<StarRateIcon sx={{ color: amber[400] }}/>);
+    }
+    
     return (
         <Container className='accommodation-details-section'>
             <img src={require("../../assets/PoseidonHotelSuites.png")}></img>
             <Grid container direction="row" justifyContent="space-between" alignItems="baseline">
                 <Grid className='accommodation-description' container direction="column" justifyContent="flex-start" alignItems="baseline">
-                    <Grid item>
-                        <h2 className='detailed-accommodation-name'>{props.accommodation.title}</h2>
+                    <Grid className='accommodation-title' container direction="row" justifyContent="flex-start" alignItems="baseline">
+                        <Grid item>
+                            <h2 className='detailed-accommodation-name'>{props.accommodation.title}</h2>
+                        </Grid>
+                        <Grid item>
+                            {stars}
+                        </Grid>
                     </Grid>
                     <Grid item>
                     <h4 className='detailed-accommodation-subtitle'>{props.accommodation.subtitle}</h4>
