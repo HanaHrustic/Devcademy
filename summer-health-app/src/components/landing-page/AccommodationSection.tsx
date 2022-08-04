@@ -9,7 +9,6 @@ import Favorites from '../Favorites';
 const AccommodationSection: React.FC<{homes: {title: string, location: string, price: number, categorization: number}[], onLinkClick(component: JSX.Element): void}> = (props) =>{
     const homesLinkClickHandler = () => {
         props.onLinkClick(<Favorites/>);
-        console.log("q");
     }
     
     return (

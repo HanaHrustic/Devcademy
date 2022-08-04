@@ -2,6 +2,8 @@ import { Grid, Button, InputAdornment } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import { useState } from "react";
+import MenuItem from '@mui/material/MenuItem';
+
 
 import classes from './SimpleSearch.module.css'
 
@@ -25,7 +27,10 @@ const SimpleSearch = () => {
                             InputProps={{
                                 startAdornment: <InputAdornment position="start"><DirectionsCarIcon/></InputAdornment>,
                             }}
-                        />
+                        >
+                            <MenuItem value={1}>London</MenuItem>
+                            <MenuItem value={2}>New York</MenuItem>
+                        </TextField>
                     </Grid>
                     <Grid item>
                         <Button className={classes.simple_search_button} type="submit" variant="contained">SEARCH</Button>

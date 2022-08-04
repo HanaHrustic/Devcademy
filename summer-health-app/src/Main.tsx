@@ -3,7 +3,6 @@ import './Main.css';
 import Footer from './components/landing-page/Footer';
 import Home from './components/Home'
 import { useState } from 'react';
-import Favorites from './components/Favorites';
 
 function Main() {
 
@@ -14,9 +13,9 @@ function Main() {
   const [content, setContent] = useState(<Home onLinkClick={changePage}/>);
 
   return (
-    <div>
+    <div className='page-wrapper'>
       <Navigation onLinkClick={changePage}/>
-      {content}
+      <div className='content'>{content}</div>
       <Footer/>
     </div>
   );

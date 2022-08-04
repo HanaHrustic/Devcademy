@@ -1,0 +1,14 @@
+[
+    {  
+        "title": "Treehouse",
+        "location": "Hrusice",  
+        "subtitle": "Renting entire unit", 
+        "image": "TreeHouse.png"
+    }, 
+    {  
+        "title": "Tiny House", 
+        "location": "Hrusice", 
+        "subtitle": "Renting entire unit",
+        "image": "TinyHouse.png"
+    } 
+]

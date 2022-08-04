@@ -1,4 +1,9 @@
-.accommodation_button{
+.advanced_search_select{
+    width: 200px;
+    height: 54px;
+}
+
+.advanced_search_button{
     background: #40E0D0 !important;
     width: 126px;
     height: 49px;
@@ -7,12 +12,7 @@
     border-radius: 4px;
 }
 
-.accommodation_search{
-    padding: 45px;
+.advanced_search{
     gap: 4px;
     flex-wrap: nowrap !important;
-}
-
-.accommodation_select{
-    width: 160px;
 }
