@@ -6,7 +6,7 @@ import HotelIcon from '@mui/icons-material/Hotel';
 import { useState } from 'react';
 import { Grid, InputAdornment, Button } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
-import CheckInOut from './CheckInOut';
+import Calendar from './Calendar';
 
 const AdvancedSearchControls = (props: any) => {
     const [number, setNumber] = useState('');
@@ -38,9 +38,12 @@ const AdvancedSearchControls = (props: any) => {
 
     return (
         <Grid item>
-            <Grid className={classes.advanced_search} container direction="row" justifyContent="flex-start" alignItems="flex-start">
+            <Grid className={classes["advanced-search"]} container direction="row" justifyContent="flex-start" alignItems="flex-start">
                 <Grid item>
-                    <CheckInOut checkInChange={checkInChange} checkOutChange={checkOutChange}/>
+                    <Calendar label='Check In' value={checkIn} onChangeHandler={checkInChange}/>
+                </Grid>
+                <Grid item>
+                    <Calendar label='Check Out' value={checkOut} onChangeHandler={checkOutChange}/>
                 </Grid>
                 <Grid item>
                     <TextField type="number" label="How many people?" variant="outlined"
@@ -54,7 +57,7 @@ const AdvancedSearchControls = (props: any) => {
                     />
                 </Grid>
                 <Grid item>
-                    <TextField className={classes.advanced_search_select} select label="What type of accommodation?" value={typeOfAccommodation} 
+                    <TextField className={classes["advanced-search-select"]} select label="What type of accommodation?" value={typeOfAccommodation} 
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                             typeOfAccomodationChange(event.target.value);
                         }} 

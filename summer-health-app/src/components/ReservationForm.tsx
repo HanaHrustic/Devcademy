@@ -71,7 +71,7 @@ const ReservationForm = () => {
                 </Grid>
                 <Grid item>
                     <Grid container direction="row-reverse" justifyContent="flex-start" alignItems="baseline">
-                        <Button type="submit" className={classes.reservation_form_button} variant="contained">BOOK YOUR STAY</Button>
+                        <Button type="submit" className={classes["reservation-form-button"]} variant="contained">BOOK YOUR STAY</Button>
                     </Grid>
                 </Grid>
             </form>

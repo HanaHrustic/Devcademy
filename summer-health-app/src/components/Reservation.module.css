@@ -1,9 +1,9 @@
-.reservation_title{
+.reservation-title{
+    color: #000000;
     font-family: 'Roboto';
+    font-size: 34px !important;
     font-style: normal;
     font-weight: 400;
-    font-size: 34px !important;
-    line-height: 120%;
     letter-spacing: 0.25px;
-    color: #000000;
+    line-height: 120%;
 }

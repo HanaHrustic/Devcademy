@@ -1,18 +1,17 @@
-.accommodation_button{
+.accommodation-button{
     background: #40E0D0 !important;
-    width: 126px;
-    height: 49px;
-
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
     border-radius: 4px;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+    height: 49px;
+    width: 126px;
 }
 
-.accommodation_search{
-    padding: 45px;
-    gap: 4px;
+.accommodation-search{
     flex-wrap: nowrap !important;
+    gap: 4px;
+    padding: 45px;
 }
 
-.accommodation_select{
+.accommodation-select{
     width: 160px;
 }

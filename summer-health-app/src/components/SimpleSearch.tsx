@@ -20,7 +20,7 @@ const SimpleSearch = () => {
             <form onSubmit={submitHandler}>
                 <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start">
                     <Grid item>
-                        <TextField className={classes.simple_search_select} select label="Where are you going?" value={destination} 
+                        <TextField className={classes["simple-search-select"]} select label="Where are you going?" value={destination} 
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 setDestination(event.target.value);
                             }} 
@@ -33,7 +33,7 @@ const SimpleSearch = () => {
                         </TextField>
                     </Grid>
                     <Grid item>
-                        <Button className={classes.simple_search_button} type="submit" variant="contained">SEARCH</Button>
+                        <Button className={classes["simple-search-button"]} type="submit" variant="contained">SEARCH</Button>
                     </Grid>
                 </Grid>
             </form>

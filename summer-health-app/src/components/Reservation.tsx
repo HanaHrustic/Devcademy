@@ -9,7 +9,7 @@ const Reservation: React.FC<{accommodation: {title: string, subtitle: string, de
     return (
         <Container>
             <Grid container direction="column" justifyContent="flex-start" alignItems="baseline">
-                <p className={classes.reservation_title}>Book your stay</p>
+                <p className={classes["reservation-title"]}>Book your stay</p>
                 <Grid container direction="row" justifyContent="space-between" alignItems="flex-start">
                     <Grid item>
                         <ReservationForm/>

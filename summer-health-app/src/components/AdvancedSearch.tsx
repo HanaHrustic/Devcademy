@@ -18,12 +18,12 @@ const AdvancedSearch = () => {
 
     return(
         <form onSubmit={submitHandler}>
-            <Grid className={classes.advanced_search} container direction="row" justifyContent="flex-start" alignItems="center">
+            <Grid className={classes["advanced-search"]} container direction="row" justifyContent="flex-start" alignItems="center">
                 <Grid item>
                     <AdvancedSearchControls numberChange={setNumber} typeOfAccomodationChange={setTypeOfAccommodation} checkInChange={setCheckIn} checkOutChange={setCheckOut}/>
                 </Grid>
                 <Grid item>
-                    <Button className={classes.advanced_button} type="submit" variant="contained">SEARCH</Button>
+                    <Button className={classes["advanced-button"]} type="submit" variant="contained">SEARCH</Button>
                 </Grid>
             </Grid>
         </form>

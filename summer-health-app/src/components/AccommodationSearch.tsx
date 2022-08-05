@@ -22,9 +22,9 @@ const AccommodationSearch = (props: any) => {
 
     return (
         <form onSubmit={submitHandler}>
-            <Grid className={classes.accommodation_search} container direction="row" justifyContent="flex-start" alignItems="center">
+            <Grid className={classes["accommodation-search"]} container direction="row" justifyContent="flex-start" alignItems="center">
                 <Grid item>
-                    <TextField className={classes.accommodation_select} select label="Where are you going?" value={destination} 
+                    <TextField className={classes["accommodation-select"]} select label="Where are you going?" value={destination} 
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                             setDestination(event.target.value);
                         }} 
@@ -40,7 +40,7 @@ const AccommodationSearch = (props: any) => {
                     <AdvancedSearchControls numberChange={setNumber} typeOfAccomodationChange={setTypeOfAccommodation} checkInChange={setCheckIn} checkOutChange={setCheckOut}/>
                 </Grid>
                 <Grid item>
-                    <Button className={classes.accommodation_button} type="submit" variant="contained">SEARCH</Button>
+                    <Button className={classes["accommodation-button"]} type="submit" variant="contained">SEARCH</Button>
                 </Grid>
             </Grid>
         </form>

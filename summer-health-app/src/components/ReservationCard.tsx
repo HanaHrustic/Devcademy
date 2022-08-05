@@ -11,11 +11,11 @@ const ReservationCard: React.FC<{accommodation: {title: string, subtitle: string
     }
     
     return (
-        <Grid className={classes.reservation_card} container direction="row" justifyContent="flex-start" alignItems="flex-start">
-            <Grid item className={classes.reservation_image}>
+        <Grid className={classes["reservation-card"]} container direction="row" justifyContent="flex-start" alignItems="flex-start">
+            <Grid item className={classes["reservation-image"]}>
                 <img src={require("../assets/PoseidonHotelSuitesIcon.png")}/>
             </Grid>
-            <Grid item className={classes.reservation_info}>
+            <Grid item className={classes["reservation-info"]}>
                 <Grid container direction="column" justifyContent="flex-start" alignItems="baseline">
                     <Grid item>
                         <h3>{props.accommodation.title}</h3>
