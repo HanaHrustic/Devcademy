@@ -1,0 +1,12 @@
+.reservation-card{
+    border: 1px solid #E3E3E3;
+    border-radius: 8px;
+}
+
+.reservation-image{
+    padding: 16px;
+}
+
+.reservation-info{
+    padding: 16px;
+}

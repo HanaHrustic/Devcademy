@@ -1,0 +1,13 @@
+.advanced-search{
+    flex-wrap: nowrap !important;
+    gap: 4px;
+    padding: 45px;
+}
+
+.advanced-button{
+    background: #40E0D0 !important;
+    border-radius: 4px;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+    height: 49px;
+    width: 126px;
+}
