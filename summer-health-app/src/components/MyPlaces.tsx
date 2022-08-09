@@ -1,11 +1,16 @@
-import { Container } from "@mui/material";
+import PlaceSection from "./PlaceSection";
 
-function MyPlaces (){
+function MyPlaces (props: any){
+    const places = require('../data/places.json').map((place:any) => {
+        return {...place, image:require(`../assets/${place.image}`)}});
+
+    const changePage = (component: JSX.Element) => {
+        props.onLinkClick(component);
+    }
+
     return (
         <div>
-            <Container>
-                <h1>My Places</h1>
-            </Container>
+            <PlaceSection places={places} onLinkClick={changePage}/>
         </div>
     );
 }

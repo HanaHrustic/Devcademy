@@ -22,7 +22,7 @@ const Navigation = (props: any) => {
   }
 
   const myPlacesLinkClickHandler = () => {
-    props.onLinkClick(<MyPlaces/>);
+    props.onLinkClick(<MyPlaces onLinkClick={changePage}/>);
   }
 
   const myBookingsLinkClickHandler = () => {
