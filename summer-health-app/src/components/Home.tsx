@@ -1,8 +1,8 @@
-import AccommodationDetails from "./landing-page/AccommodationDetails";
-import AccommodationSection from "./landing-page/AccommodationSection";
-import CitySection from "./landing-page/CitySection";
-import Header from "./landing-page/Header";
-import PlaceSection from "./landing-page/PlaceSection";
+import AccommodationDetails from "./AccommodationDetails";
+import AccommodationSection from "./AccommodationSection";
+import CitySection from "./CitySection";
+import Header from "./Header";
+import PlaceSection from "./PlaceSection";
 
 const Home = (props: any) => {
     const cities = require('../data/cities.json')

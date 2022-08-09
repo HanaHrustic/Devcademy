@@ -4,7 +4,7 @@ import CityCard from './CityCard';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Container from 'react-bootstrap/Container';
-import Locations from '../Locations';
+import Locations from './Locations';
 
 
 const CitySection: React.FC<{cities: {name: string, count: string}[], onLinkClick(component: JSX.Element): void}> = (props) => {

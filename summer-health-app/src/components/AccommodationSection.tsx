@@ -4,7 +4,7 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Container from 'react-bootstrap/Container';
 import AccommodationCard from './AccommodationCard';
-import Favorites from '../Favorites';
+import Favorites from './Favorites';
 
 const AccommodationSection: React.FC<{homes: {title: string, location: string, price: number, categorization: number}[], onLinkClick(component: JSX.Element): void}> = (props) =>{
     const homesLinkClickHandler = () => {

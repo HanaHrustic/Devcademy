@@ -1,6 +1,6 @@
-import Navigation from './components/landing-page/Navigation';
+import Navigation from './components/Navigation';
 import './Main.css';
-import Footer from './components/landing-page/Footer';
+import Footer from './components/Footer';
 import Home from './components/Home'
 import { useState } from 'react';
 

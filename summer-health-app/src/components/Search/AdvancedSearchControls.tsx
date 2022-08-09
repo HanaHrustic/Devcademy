@@ -6,7 +6,7 @@ import HotelIcon from '@mui/icons-material/Hotel';
 import { useState } from 'react';
 import { Grid, InputAdornment, Button } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
-import Calendar from './Calendar';
+import Calendar from '../Calendar';
 
 const AdvancedSearchControls = (props: any) => {
     const [number, setNumber] = useState('');

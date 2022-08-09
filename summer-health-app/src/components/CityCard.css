@@ -3,7 +3,7 @@
     height: 295px !important; 
     background-image: 
     linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(255, 255, 255, 0) 100%),
-    url("../../assets/London.png");
+    url("../assets/London.png");
     border-radius: 12px;
     background-repeat: no-repeat; 
 }

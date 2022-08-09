@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import classes from './Reservation.module.css';
 
 import ReservationCard from "./ReservationCard";
-import ReservationForm from "./ReservationForm";
+import ReservationForm from "./Forms/ReservationForm";
 
 const Reservation: React.FC<{accommodation: {title: string, subtitle: string, description: string, type: string, categorization: number, personCount: number, imageUrl: string, freeCancelation: boolean, price: number, location: string, postalCode: string}}> = (props) => {
     return (

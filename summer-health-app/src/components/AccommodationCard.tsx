@@ -12,7 +12,7 @@ const AccommodationCard: React.FC<{homes: {title: string, location: string, pric
     return (
         <Grid className='card-accommodation' container direction="column" justifyContent="space-around" alignItems="baseline">
             <Grid item>
-                <img src={require('../../assets/Sugar-Spice-Apartments.png')}/>
+                <img src={require('../assets/Sugar-Spice-Apartments.png')}/>
             </Grid>
             <Grid className='accommodation-title' item>
                 {props.homes[0].title}
