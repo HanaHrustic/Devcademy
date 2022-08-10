@@ -23,12 +23,9 @@ const PlaceSection: React.FC<{places: {title: string, location: string, subtitle
                     </Grid>
                 </Grid>
                 <Grid className='places' container direction="row" justifyContent="flex-start" alignItems="baseline">
-                    <Grid item>
-                        <PlaceCard place={props.places[0]}/>
-                    </Grid>   
-                    <Grid item>
-                        <PlaceCard place={props.places[1]}/>
-                    </Grid>
+                    {props.places.map((place) => (
+                        <PlaceCard place={place}/>
+                    ))}
                 </Grid>
             </Grid>
         </Container>

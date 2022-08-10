@@ -3,6 +3,7 @@
         "title": "Sugar & Spice Apartments",
         "location": "Split",
         "price": 75,
-        "categorization": 3
+        "categorization": 3,
+        "imageUrl": "Sugar-Spice-Apartments.png"
     }
 ]

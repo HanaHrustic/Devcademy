@@ -1,12 +1,16 @@
 import AccommodationDetails from "./AccommodationDetails";
 import AccommodationSection from "./AccommodationSection";
 import CitySection from "./CitySection";
-import NewPlaceForm from "./Forms/NewPlaceForm";
 import Header from "./Header";
 
 const Home = (props: any) => {
     const cities = require('../data/cities.json')
     const homes = require('../data/homes.json')
+        .map((home: {title: string, location: string, price: number, categorization: number, imageUrl: string}) => 
+            {
+            return {...home, imageUrl:require(`../assets/${home.imageUrl}`)};
+            }
+        );
     const accommodations = require('../data/accommodations.json')
 
     const changePage = (component: JSX.Element) => {
@@ -15,7 +19,7 @@ const Home = (props: any) => {
 
     return(
         <div>
-            <Header/>
+            <Header onLinkClick={changePage}/>
             <CitySection cities={cities} onLinkClick={changePage}/>
             <AccommodationSection homes={homes} onLinkClick={changePage}/>
             <AccommodationDetails accommodation={accommodations[0]} onLinkClick={changePage}/>

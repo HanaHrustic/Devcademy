@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import AccommodationCard from './AccommodationCard';
 import Favorites from './Favorites';
 
-const AccommodationSection: React.FC<{homes: {title: string, location: string, price: number, categorization: number}[], onLinkClick(component: JSX.Element): void}> = (props) =>{
+const AccommodationSection: React.FC<{homes: {title: string, location: string, price: number, categorization: number, imageUrl: string}[], onLinkClick(component: JSX.Element): void}> = (props) =>{
     const homesLinkClickHandler = () => {
         props.onLinkClick(<Favorites/>);
     }
@@ -23,7 +23,9 @@ const AccommodationSection: React.FC<{homes: {title: string, location: string, p
                     </Grid>
                 </Grid>
                 <Grid className='accommodation-card' container direction="row" justifyContent="flex-start" alignItems="baseline">
-                    <AccommodationCard homes={props.homes}/>
+                    {props.homes.map((home) => (
+                        <AccommodationCard home={home}/>
+                    ))}
                 </Grid>
             </Grid>
         </Container>

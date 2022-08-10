@@ -24,7 +24,9 @@ const CitySection: React.FC<{cities: {name: string, count: string}[], onLinkClic
             </Grid>
             <Grid container direction="row" justifyContent="flex-start" alignItems="baseline">
                 <Grid item>
-                    <CityCard cities={props.cities}/>
+                    {props.cities.map((city) => (
+                        <CityCard city={city}/>
+                    ))}
                 </Grid>
             </Grid>
         </Container>

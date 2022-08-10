@@ -1,0 +1,16 @@
+.title{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 34px;
+}
+
+.subtitle{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    color: #7C7C7C;
+}
+
+.wrapper{
+    padding-top: 20px;
+}
