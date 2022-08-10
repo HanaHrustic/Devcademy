@@ -5,6 +5,11 @@ import Header from "./Header";
 
 const Home = (props: any) => {
     const cities = require('../data/cities.json')
+        .map((city: {name: string, count: string, imageUrl: string}) => 
+        {
+        return {...city, imageUrl:require(`../assets/${city.imageUrl}`)};
+        }
+    );
     const homes = require('../data/homes.json')
         .map((home: {title: string, location: string, price: number, categorization: number, imageUrl: string}) => 
             {

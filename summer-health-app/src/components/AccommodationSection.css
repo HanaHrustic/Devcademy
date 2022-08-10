@@ -24,4 +24,5 @@
 
 .accommodation-card{
     padding-top: 38px;
+    column-gap: 24px;
 }

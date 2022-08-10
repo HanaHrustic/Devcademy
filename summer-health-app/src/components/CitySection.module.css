@@ -9,6 +9,15 @@
     color: #40E0D0 !important;
 }
 
+.city-row {
+    column-gap: 24px;
+    margin-bottom: 20px;
+}
+
+.city{
+    flex-grow: 1;
+}
+
 .popular-locations-section{
     padding-top: 120px;
 }

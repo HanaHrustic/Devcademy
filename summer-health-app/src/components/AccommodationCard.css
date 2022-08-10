@@ -1,6 +1,7 @@
 .card-accommodation{
     width: 297px !important;
     height: 413px;
+    flex-grow: 1;
 }
 
 img{
