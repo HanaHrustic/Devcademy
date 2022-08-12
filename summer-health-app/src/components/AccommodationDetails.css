@@ -1,46 +1,44 @@
 .detailed-accommodation-name{
+    color: #000000;
     font-family: 'Roboto';
+    font-size: 34px;
     font-style: normal;
     font-weight: 400;
-    font-size: 34px;
-    line-height: 120%;
     letter-spacing: 0.25px;
-    color: #000000;
-
+    line-height: 120%;
 }
 
 .detailed-accommodation-subtitle{
+    color: #7C7C7C;
     font-family: 'Roboto';
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
     letter-spacing: 0.15px;
-    color: #7C7C7C;
+    line-height: 150%;
     padding-top: 12px;
 }
 
 .accommodation-description{
-    width: 60% !important;
-    height: 100%;
+    color: #1A3440;
     font-family: 'Roboto';
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
+    height: 100%;
     letter-spacing: 0.15px;
-    color: #1A3440;
+    line-height: 150%;
+    width: 60% !important;
 }
 
 .accommodation-summary{
-    width: 25% !important;
     background: #F2FDFC;
-
-    box-shadow: 0px 4px 4px rgba(205, 205, 205, 0.25);
     border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(205, 205, 205, 0.25);
+    gap: 44px;
     margin-top: 33px;
     padding: 24px;
-    gap: 44px;
+    width: 25% !important;
 }
 
 .available-icon{
@@ -48,19 +46,19 @@
 }
 
 .property-info-title{
+    color: #000000;
     font-family: 'Roboto';
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 160%;
     letter-spacing: 0.15px;
-    color: #000000;
+    line-height: 160%;
 }
 
 .book-your-stay-button{
-    width: 100%;
-    height: 42px;
     background: #40E0D0 !important;
+    height: 42px;
+    width: 100%;
 }
 
 .accommodation-details-section{
@@ -68,8 +66,8 @@
 }
 
 .cancelation{
-    padding-top: 32px;
     padding-bottom: 32px;
+    padding-top: 32px;
 }
 
 .accommodation-title{

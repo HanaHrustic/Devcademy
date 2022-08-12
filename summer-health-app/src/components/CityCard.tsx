@@ -12,7 +12,7 @@ const CityCard: React.FC<{city: {name: string, count: string, imageUrl: string}}
                 {props.city.name}
             </Grid>
             <Grid className='city-count' item>
-                {props.city.count} properties
+                {props.city.count} {parseInt(props.city.count.replace(/,/g, '')) > 1 ? "properties" : "property"}
             </Grid>
         </Container>
     );

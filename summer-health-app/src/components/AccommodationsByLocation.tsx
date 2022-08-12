@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import { Container } from 'react-bootstrap';
-import classes from './AccommodationByLocation.module.css'
+import classes from './AccommodationsByLocation.module.css'
 import AccommodationCard from './AccommodationCard';
 import AdvancedSearch from './Search/AdvancedSearch';
 

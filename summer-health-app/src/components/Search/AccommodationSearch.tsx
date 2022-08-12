@@ -5,7 +5,7 @@ import { Button, Grid, InputAdornment, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import AdvancedSearchControls from './AdvancedSearchControls';
-import AccommodationByLocation from '../AccommodationByLocation';
+import AccommodationsByLocation from '../AccommodationsByLocation';
 
 const AccommodationSearch = (props: any) => {
     const [destination, setDestination] = useState('');
@@ -19,7 +19,7 @@ const AccommodationSearch = (props: any) => {
     const submitHandler = (event: React.FormEvent) => {
         event.preventDefault();
         console.log(destination, checkIn, checkOut, number, typeOfAccommodation);
-        props.onLinkClick(<AccommodationByLocation destination={destination}/>);
+        props.onLinkClick(<AccommodationsByLocation destination={destination}/>);
     }
 
     return (

@@ -1,56 +1,54 @@
 .card-place{
-    width: 297px !important;
     height: 436px;
+    width: 297px !important;
 }
 
 .place-title{
+    color: #000000;
     font-family: 'Roboto';
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 120%;
     letter-spacing: 0.25px;
-    color: #000000;
+    line-height: 120%;
 }
 
 .place-location{
+    color: #ADADAD;
     font-family: 'Roboto';
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 120%;
-
     letter-spacing: 0.25px;
-
-    color: #ADADAD;
+    line-height: 120%;
 }
 
 .place.subtitle{
+    color: #1A3440;
     font-family: 'Roboto';
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
-    font-size: 15px;
-    line-height: 120%;
     letter-spacing: 0.25px;
-    color: #1A3440;
+    line-height: 120%;
 }
 
 .edit-button{
+    color: #40E0D0 !important;
     font-family: 'Roboto';
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 170%;
     letter-spacing: 0.4px;
-    color: #40E0D0 !important;
+    line-height: 170%;
 }
 
 .delete-button{
+    color: #EF6B6B !important;
     font-family: 'Roboto';
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 170%;
     letter-spacing: 0.4px;
-    color: #EF6B6B !important;
+    line-height: 170%;
 }

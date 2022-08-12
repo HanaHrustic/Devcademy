@@ -1,7 +1,7 @@
 .card-accommodation{
-    width: 297px !important;
-    height: 413px;
     flex-grow: 1;
+    height: 413px;
+    width: 297px !important;
 }
 
 img{
@@ -10,31 +10,31 @@ img{
 }
 
 .accommodation-title{
+    color: #000000;
     font-family: 'Roboto';
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 120%;
     letter-spacing: 0.25px;
-    color: #000000;
+    line-height: 120%;
 }
 
 .accommodation-location{
+    color: #ADADAD;
     font-family: 'Roboto';
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 120%;
     letter-spacing: 0.25px;
-    color: #ADADAD;
+    line-height: 120%;
 }
 
 .accommodation-price{
+    color: #1A3440;
     font-family: 'Roboto';
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
-    font-size: 15px;
-    line-height: 120%;
     letter-spacing: 0.25px;
-    color: #1A3440;
+    line-height: 120%;
 }
