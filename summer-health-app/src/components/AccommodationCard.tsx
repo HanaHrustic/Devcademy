@@ -1,30 +1,25 @@
 import './AccommodationCard.css'
 
 import Grid from '@mui/material/Grid';
-import StarRateIcon from '@mui/icons-material/StarRate';
-import { amber } from '@mui/material/colors';
+import { Rating } from '@mui/material';
 
-const AccommodationCard: React.FC<{homes: {title: string, location: string, price: number, categorization: number}[]}> = (props) =>{
-    const stars = [];
-    for(let i = 0; i < props.homes[0].categorization; i++) {
-        stars.push(<StarRateIcon sx={{ color: amber[400] }}/>);
-    }
+const AccommodationCard: React.FC<{home: {title: string, location: string, price: number, categorization: number, imageUrl: string}}> = (props) =>{
     return (
         <Grid className='card-accommodation' container direction="column" justifyContent="space-around" alignItems="baseline">
             <Grid item>
-                <img src={require('../../assets/Sugar-Spice-Apartments.png')}/>
+                <img src={props.home.imageUrl}/>
             </Grid>
             <Grid className='accommodation-title' item>
-                {props.homes[0].title}
+                {props.home.title}
             </Grid>
             <Grid className='accommodation-location' item>
-                {props.homes[0].location} 
+                {props.home.location} 
             </Grid>
             <Grid className='accommodation-price' item>
-                EUR {props.homes[0].price}
+                EUR {props.home.price}
             </Grid>
             <Grid className='accommodation-categorization' item>
-                {stars}
+                <Rating value={props.home.categorization} readOnly />
             </Grid>
         </Grid>
     );

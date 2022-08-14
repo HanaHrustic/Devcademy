@@ -3,6 +3,28 @@
         "title": "Sugar & Spice Apartments",
         "location": "Split",
         "price": 75,
-        "categorization": 3
+        "categorization": 3,
+        "imageUrl": "Sugar-Spice-Apartments.png"
+    },
+    {  
+        "title": "Lemon Luxury Apartments",
+        "location": "Saint Tropez",
+        "price": 174,
+        "categorization": 5,
+        "imageUrl": "Lemon-Luxury-Apartments.png"
+    },
+    {  
+        "title": "Casa Krystal",
+        "location": "Cancún",
+        "price": 123,
+        "categorization": 4,
+        "imageUrl": "Casa-Krystal.png"
+    },
+    {  
+        "title": "Phuket Kamala Beach Hotel",
+        "location": "Phuket",
+        "price": 55,
+        "categorization": 5,
+        "imageUrl": "Phuket-Kamala-Beach-Hotel.png"
     }
 ]

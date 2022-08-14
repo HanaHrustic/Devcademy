@@ -1,6 +1,27 @@
 [
     {
-      "name": "London",  
-      "count": "5102" 
+      "name": "New York",
+      "count": "1,381",
+      "imageUrl": "New_York.png"
+    },
+    {
+      "name": "Rome",
+      "count": "14,098",
+      "imageUrl": "Rome.png"
+    },
+    {
+      "name": "London",
+      "count": "5,102",
+      "imageUrl": "London.png"
+    },
+    {
+      "name": "Tokyo",
+      "count": "11,251",
+      "imageUrl": "Tokyo.png"
+    },
+    {
+      "name": "Barcelona",
+      "count": "21,104",
+      "imageUrl": "Barcelona.png"
     }
 ]

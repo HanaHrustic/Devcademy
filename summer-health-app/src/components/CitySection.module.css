@@ -1,12 +1,21 @@
 .all-locations-link{
+    color: #40E0D0 !important;
     font-family: 'Roboto';
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
-    font-size: 15px;
-    line-height: 26px;
     letter-spacing: 0.46px;
+    line-height: 26px;
     text-transform: uppercase;
-    color: #40E0D0 !important;
+}
+
+.city-row {
+    column-gap: 24px;
+    margin-bottom: 20px;
+}
+
+.city{
+    flex-grow: 1;
 }
 
 .popular-locations-section{
@@ -14,12 +23,12 @@
 }
 
 .popular-locations-title{
+    color: #000000;
     font-family: 'Roboto';
+    font-size: 34px;
     font-style: normal;
     font-weight: 400;
-    font-size: 34px;
-    line-height: 120%;
     letter-spacing: 0.25px;
-    color: #000000;
+    line-height: 120%;
     padding-bottom: 41px;
 }

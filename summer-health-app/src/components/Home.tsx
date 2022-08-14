@@ -1,14 +1,21 @@
-import AccommodationDetails from "./landing-page/AccommodationDetails";
-import AccommodationSection from "./landing-page/AccommodationSection";
-import CitySection from "./landing-page/CitySection";
-import Header from "./landing-page/Header";
-import PlaceSection from "./landing-page/PlaceSection";
+import AccommodationDetails from "./AccommodationDetails";
+import AccommodationSection from "./AccommodationSection";
+import CitySection from "./CitySection";
+import Header from "./Header";
 
 const Home = (props: any) => {
     const cities = require('../data/cities.json')
+        .map((city: {name: string, count: string, imageUrl: string}) => 
+        {
+        return {...city, imageUrl:require(`../assets/${city.imageUrl}`)};
+        }
+    );
     const homes = require('../data/homes.json')
-    const places = require('../data/places.json').map((place:any) => {
-     return {...place, image:require(`../assets/${place.image}`)}});
+        .map((home: {title: string, location: string, price: number, categorization: number, imageUrl: string}) => 
+            {
+            return {...home, imageUrl:require(`../assets/${home.imageUrl}`)};
+            }
+        );
     const accommodations = require('../data/accommodations.json')
 
     const changePage = (component: JSX.Element) => {
@@ -17,10 +24,9 @@ const Home = (props: any) => {
 
     return(
         <div>
-            <Header/>
+            <Header onLinkClick={changePage}/>
             <CitySection cities={cities} onLinkClick={changePage}/>
             <AccommodationSection homes={homes} onLinkClick={changePage}/>
-            <PlaceSection places={places}/>
             <AccommodationDetails accommodation={accommodations[0]} onLinkClick={changePage}/>
         </div>
     );

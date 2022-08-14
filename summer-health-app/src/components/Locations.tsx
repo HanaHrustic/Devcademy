@@ -1,5 +1,5 @@
 import { Container, Grid } from "@mui/material";
-import SimpleSearch from "./SimpleSearch";
+import SimpleSearch from "./Search/SimpleSearch";
 
 function Locations (props:any){
     return (

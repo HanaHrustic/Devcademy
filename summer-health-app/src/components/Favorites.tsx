@@ -1,5 +1,5 @@
 import { Container, Grid } from "@mui/material";
-import AdvancedSearch from "./AdvancedSearch";
+import AdvancedSearch from "./Search/AdvancedSearch";
 
 
 function Favorites (){
