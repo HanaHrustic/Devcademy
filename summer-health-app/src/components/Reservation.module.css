@@ -7,3 +7,11 @@
     letter-spacing: 0.25px;
     line-height: 120%;
 }
+
+.reservation-form{
+    width: 50%;
+}
+
+.reservation-info{
+    width: 50%;
+}

@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Container from 'react-bootstrap/Container';
 
 
-const CityCard: React.FC<{city: {name: string, count: string, imageUrl: string}}> = (props) => {
+const CityCard: React.FC<{city: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}}> = (props) => {
     return (
         <Container className='card-city'>            
             <img src={props.city.imageUrl} className='background-image' />
@@ -12,7 +12,7 @@ const CityCard: React.FC<{city: {name: string, count: string, imageUrl: string}}
                 {props.city.name}
             </Grid>
             <Grid className='city-count' item>
-                {props.city.count} {parseInt(props.city.count.replace(/,/g, '')) > 1 ? "properties" : "property"}
+                {props.city.properties} {parseInt(props.city.properties.toString().replace(/,/g, '')) > 1 ? "properties" : "property"}
             </Grid>
         </Container>
     );

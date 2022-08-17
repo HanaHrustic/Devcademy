@@ -1,9 +1,21 @@
-.card-place{
-    height: 436px;
+.card-accommodation{
+    flex-grow: 1;
+    height: 413px;
     width: 297px !important;
 }
 
-.place-title{
+.image-container {
+    object-fit: cover;
+}
+
+.accommodation-card-image{
+    border-radius: 12px;
+    height: 266px;
+    object-fit: cover;
+    width: 297px;
+}
+
+.accommodation-title{
     color: #000000;
     font-family: 'Roboto';
     font-size: 20px;
@@ -13,7 +25,7 @@
     line-height: 120%;
 }
 
-.place-location{
+.accommodation-location{
     color: #ADADAD;
     font-family: 'Roboto';
     font-size: 15px;
@@ -23,7 +35,7 @@
     line-height: 120%;
 }
 
-.place.subtitle{
+.accommodation-price{
     color: #1A3440;
     font-family: 'Roboto';
     font-size: 15px;
@@ -31,24 +43,4 @@
     font-weight: 500;
     letter-spacing: 0.25px;
     line-height: 120%;
-}
-
-.edit-button{
-    color: #40E0D0 !important;
-    font-family: 'Roboto';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    letter-spacing: 0.4px;
-    line-height: 170%;
-}
-
-.delete-button{
-    color: #EF6B6B !important;
-    font-family: 'Roboto';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    letter-spacing: 0.4px;
-    line-height: 170%;
 }

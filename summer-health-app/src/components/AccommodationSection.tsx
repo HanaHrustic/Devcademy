@@ -6,9 +6,15 @@ import Container from 'react-bootstrap/Container';
 import AccommodationCard from './AccommodationCard';
 import Favorites from './Favorites';
 
-const AccommodationSection: React.FC<{homes: {title: string, location: string, price: number, categorization: number, imageUrl: string}[], onLinkClick(component: JSX.Element): void}> = (props) =>{
+import { useCallback, useEffect, useState } from "react";
+
+const AccommodationSection: React.FC<{homes: {id: string, title: string, categorization: number, imageUrl: string, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}}[], onLinkClick(component: JSX.Element): void}> = (props) =>{
     const homesLinkClickHandler = () => {
-        props.onLinkClick(<Favorites/>);
+        props.onLinkClick(<Favorites homes={props.homes} onLinkClick={changePage}/>);
+    }
+
+    const changePage = (component: JSX.Element) => {
+        props.onLinkClick(component);
     }
     
     return (
@@ -23,8 +29,8 @@ const AccommodationSection: React.FC<{homes: {title: string, location: string, p
                     </Grid>
                 </Grid>
                 <Grid className='accommodation-card' container direction="row" justifyContent="flex-start" alignItems="baseline">
-                    {props.homes.map((home) => (
-                        <AccommodationCard home={home}/>
+                    {props.homes.slice(0, 4).map((home) => (
+                        <AccommodationCard key={home.id} home={home} onLinkClick={changePage}/>
                     ))}
                 </Grid>
             </Grid>

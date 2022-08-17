@@ -1,3 +1,9 @@
+.accommodation-details-img{
+    height: 427px;
+    object-fit: cover;
+    width: 100%;
+}
+
 .detailed-accommodation-name{
     color: #000000;
     font-family: 'Roboto';

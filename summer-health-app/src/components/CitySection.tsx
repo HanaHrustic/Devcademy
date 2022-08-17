@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Locations from './Locations';
 
 
-const CitySection: React.FC<{cities: {name: string, count: string, imageUrl: string}[], onLinkClick(component: JSX.Element): void}> = (props) => {
+const CitySection: React.FC<{cities: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}[], onLinkClick(component: JSX.Element): void}> = (props) => {
     const locationLinkClickHandler = () => {
         props.onLinkClick(<Locations/>);
     }
@@ -24,14 +24,14 @@ const CitySection: React.FC<{cities: {name: string, count: string, imageUrl: str
             </Grid>
             <Grid className={classes["city-row"]} container direction="row" justifyContent="flex-start" alignItems="baseline">
                 {props.cities.slice(0, 2).map((city) => ( 
-                    <Grid className={classes["city"]} item>
+                    <Grid className={classes["city"]} key={city.id} item>
                         <CityCard city={city}/>
                     </Grid>
                 ))}
             </Grid>
             <Grid className={classes["city-row"]} container direction="row" justifyContent="flex-start" alignItems="baseline">
-                {props.cities.slice(2).map((city) => (
-                    <Grid className={classes["city"]} item>
+                {props.cities.slice(2, 5).map((city) => (
+                    <Grid className={classes["city"]} key={city.id} item>
                         <CityCard city={city}/>
                     </Grid>
                 ))}
