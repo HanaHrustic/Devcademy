@@ -8,7 +8,7 @@ import Favorites from './Favorites';
 
 import { useCallback, useEffect, useState } from "react";
 
-const AccommodationSection: React.FC<{homes: {id: string, title: string, categorization: number, imageUrl: string, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}}[], onLinkClick(component: JSX.Element): void}> = (props) =>{
+const AccommodationSection: React.FC<{homes: {id: string, title: string, type: string, categorization: number, imageUrl: string, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}}[], onLinkClick(component: JSX.Element): void}> = (props) =>{
     const homesLinkClickHandler = () => {
         props.onLinkClick(<Favorites homes={props.homes} onLinkClick={changePage}/>);
     }

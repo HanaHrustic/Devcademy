@@ -65,8 +65,9 @@ const AdvancedSearchControls = (props: any) => {
                             startAdornment: <InputAdornment position="start"><HotelIcon/></InputAdornment>,
                         }}
                     >
-                        <MenuItem value={1}>House</MenuItem>
-                        <MenuItem value={2}>Apartment</MenuItem>
+                        <MenuItem value={"House"}>House</MenuItem>
+                        <MenuItem value={"Apartment"}>Apartment</MenuItem>
+                        <MenuItem value={"Mobile Home"}>Mobile Home</MenuItem>
                     </TextField>
                 </Grid>
             </Grid>

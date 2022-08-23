@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import CityCard from "./CityCard";
 
 import classes from './Locations.module.css'
+import AccommodationsByLocation from "./AccommodationsByLocation";
 
 function Locations (props:any){
     const [locations, setLocations] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number}[]>([]);
@@ -23,13 +24,21 @@ function Locations (props:any){
         fetchLocations();
     }, []);
 
+    const changePage = (component: JSX.Element) => {
+        props.onLinkClick(component);
+    }
+
+    const submitHandler = (id: string) => {
+        props.onLinkClick(<AccommodationsByLocation destination={locations.find(location => location.id === id)!} onLinkClick={changePage}/>);
+    }
+
     return (
         <Container>
             <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start">
                 <Grid item>
                     <h1>All locations</h1>
                 </Grid>
-                <SimpleSearch/>
+                <SimpleSearch formResult={submitHandler}/>
             </Grid>
             <Grid className={classes["city-section"]} container direction="row" justifyContent="flex-start" alignItems="flex-start">
                 {locations.map((location) => (

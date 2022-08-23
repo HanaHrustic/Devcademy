@@ -7,6 +7,7 @@ import AdvancedSearchControls from './AdvancedSearchControls';
 import AccommodationsByLocation from '../AccommodationsByLocation';
 
 import { useCallback, useEffect, useState } from "react";
+import { StringMappingType } from 'typescript';
 
 const AccommodationSearch = (props: any) => {
     const [locations, setLocations] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number}[]>([]);
@@ -24,7 +25,7 @@ const AccommodationSearch = (props: any) => {
         fetchLocations();
     }, []);
 
-    const [destination, setDestination] = useState('');
+    const [destination, setDestination] = useState<{id: string, name: string}>();
 
     const [number, setNumber] = useState('');
     const [typeOfAccommodation, setTypeOfAccommodation] = useState('');
@@ -34,11 +35,15 @@ const AccommodationSearch = (props: any) => {
 
     const submitHandler = (event: React.FormEvent) => {
         event.preventDefault();
-        props.onLinkClick(<AccommodationsByLocation destination={destination} onLinkClick={changePage}/>);
+        props.onLinkClick(<AccommodationsByLocation destination={destination!} onLinkClick={changePage}/>);
     }
 
     const changePage = (component: JSX.Element) => {
         props.onLinkClick(component);
+    }
+
+    const chooseLocation = (id: string) => {
+        setDestination(locations.find(location => location.id === id));
     }
 
     return (
@@ -47,14 +52,14 @@ const AccommodationSearch = (props: any) => {
                 <Grid item>
                     <TextField className={classes["accommodation-select"]} select label="Where are you going?" value={destination} 
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                            setDestination(event.target.value);
+                            chooseLocation(event.target.value);
                         }} 
                         InputProps={{
                             startAdornment: <InputAdornment position="start"><DirectionsCarIcon/></InputAdornment>,
                         }}
                     >
                         {locations.map((location) => (
-                            <MenuItem key={location.id} value={location.name}>{location?.name}</MenuItem>))
+                            <MenuItem key={location.id} value={location.id}>{location?.name}</MenuItem>))
                         }
                     </TextField>
                 </Grid>

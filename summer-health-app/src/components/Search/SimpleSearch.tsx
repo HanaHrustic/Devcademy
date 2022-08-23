@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useCallback, useEffect, useState } from "react";
 import classes from './SimpleSearch.module.css'
 
-const SimpleSearch = () => {
+const SimpleSearch = (props: any) => {
     const [locations, setLocations] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number}[]>([]);
     const [destination, setDestination] = useState('');
 
@@ -24,7 +24,7 @@ const SimpleSearch = () => {
 
     const submitHandler = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log(destination);
+        props.formResult(destination)
     }
 
     return (

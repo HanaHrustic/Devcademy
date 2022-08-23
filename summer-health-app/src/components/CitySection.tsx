@@ -8,8 +8,12 @@ import Locations from './Locations';
 
 
 const CitySection: React.FC<{cities: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}[], onLinkClick(component: JSX.Element): void}> = (props) => {
+    const changePage = (component: JSX.Element) => {
+        props.onLinkClick(component);
+    }
+    
     const locationLinkClickHandler = () => {
-        props.onLinkClick(<Locations/>);
+        props.onLinkClick(<Locations onLinkClick={changePage}/>);
     }
     
     return (
