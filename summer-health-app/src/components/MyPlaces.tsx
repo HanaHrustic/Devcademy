@@ -1,4 +1,5 @@
 import PlaceSection from "./PlaceSection";
+import { Route } from 'react-router-dom';
 
 import { useCallback, useEffect, useState } from "react";
 
@@ -18,13 +19,9 @@ function MyPlaces (props: any){
         fetchAccommodations();
     }, []);
 
-    const changePage = (component: JSX.Element) => {
-        props.onLinkClick(component);
-    }
-
     return (
         <div>
-            <PlaceSection homes={accommodations} onLinkClick={changePage}/>
+            <PlaceSection homes={accommodations}/>
         </div>
     );
 }

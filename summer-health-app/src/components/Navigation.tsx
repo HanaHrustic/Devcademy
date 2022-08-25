@@ -1,45 +1,31 @@
 import './Navigation.css'
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Home from './Home';
-import Locations from './Locations';
-import MyPlaces from './MyPlaces';
-import MyBookings from './MyBookings';
+import { NavLink, useHistory } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import { useContext } from 'react';
+import AuthContext from './store/auth-context';
 
-const Navigation = (props: any) => {
+const Navigation = () => {
+  const authCtx = useContext(AuthContext);
+  const history = useHistory();
 
-  const changePage = (component: JSX.Element) => {
-    props.onLinkClick(component);
-  }
-
-  const locationLinkClickHandler = () => {
-    props.onLinkClick(<Locations/>);
-  }
-  
-  const brandLinkClickHandler = () => {
-    props.onLinkClick(<Home onLinkClick={changePage}/>);
-  }
-
-  const myPlacesLinkClickHandler = () => {
-    props.onLinkClick(<MyPlaces onLinkClick={changePage}/>);
-  }
-
-  const myBookingsLinkClickHandler = () => {
-    props.onLinkClick(<MyBookings/>);
+  const handleLogoutButton = () => {
+    authCtx.logout();
+    history.replace('/login');
   }
 
   return (
     <div>
       <Navbar>
         <Container className='d-flex justify-content-between'>
-          <Navbar.Brand onClick={brandLinkClickHandler} className="brand">Staycation</Navbar.Brand>
-          <Nav className='d-flex justify-content-between'>
-            <Nav.Link onClick={locationLinkClickHandler} className="tab">Locations</Nav.Link>
-            <Nav.Link onClick={myPlacesLinkClickHandler} className="tab">My places</Nav.Link>
-            <Nav.Link onClick={myBookingsLinkClickHandler} className="tab">My Bookings</Nav.Link>
-          </Nav>              
-          <Nav.Link className="logout" href="#logout">LOGOUT</Nav.Link>
+          <NavLink to='/home' className="brand">Staycation</NavLink>
+          <Grid className='links' container direction="row" justifyContent="center" alignItems="center">
+            <NavLink to='/locations' className="tab">Locations</NavLink>
+            <NavLink to='/my-places' className="tab">My places</NavLink>
+            <NavLink to='my-bookings' className="tab">My Bookings</NavLink>           
+          </Grid>
+          <NavLink to='/' className="logout" onClick={handleLogoutButton}>LOGOUT</NavLink>
         </Container>
       </Navbar>
     </div>

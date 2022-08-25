@@ -4,15 +4,25 @@ import AdvancedSearch from "./search/AdvancedSearch";
 import classes from './Favorites.module.css';
 import AccommodationCard from "./AccommodationCard";
 import { Container } from "react-bootstrap";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 
-const Favorites: React.FC<{homes: {id: string, title: string, type: string, categorization: number, imageUrl: string, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}}[], onLinkClick(component: JSX.Element): void}> = (props) =>{
+const Favorites = () =>{
     const [typeOfAccommodation, setTypeOfAccommodation] = useState("");
-    
-    const changePage = (component: JSX.Element) => {
-        props.onLinkClick(component);
-    }
+    const [homes, setHomes] = useState<{id: string, title: string, type: string, categorization: number, imageUrl: string, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}}[]>([]);
+
+    const fetchHomes = useCallback(async () => {
+        fetch("https://devcademy.herokuapp.com/api/Accomodations")
+            .then(response => {
+                return response.json();
+            }).then(data => {
+                setHomes(data);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetchHomes();
+    }, []);
 
     const submitHandler = (type: string) => {
         setTypeOfAccommodation(type);
@@ -27,9 +37,9 @@ const Favorites: React.FC<{homes: {id: string, title: string, type: string, cate
                 <AdvancedSearch formResult={submitHandler}/>
             </Grid>
             <Grid className={classes["favorites-section"]} container direction="row" justifyContent="flex-start" alignItems="flex-start">
-                {props.homes.filter(home => typeOfAccommodation === "" || home.type === typeOfAccommodation).map((home) => (
+                {homes.filter(home => typeOfAccommodation === "" || home.type === typeOfAccommodation).map((home) => (
                     <Grid className={classes["city-card"]} key={home.id} item>
-                        <AccommodationCard home={home} onLinkClick={changePage}/>
+                        <AccommodationCard home={home}/>
                     </Grid>
                 ))}
             </Grid>

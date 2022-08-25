@@ -41,8 +41,8 @@ const SimpleSearch = (props: any) => {
                             }}
                         >
                             {locations.map((location) => (
-                            <MenuItem key={location.id} value={location.name}>{location?.name}</MenuItem>))
-                        }
+                                <MenuItem key={location.id} value={location.id}>{location?.name}</MenuItem>))
+                            }
                         </TextField>
                     </Grid>
                     <Grid item>
