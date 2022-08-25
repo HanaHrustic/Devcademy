@@ -1,8 +1,22 @@
 import PlaceSection from "./PlaceSection";
 
+import { useCallback, useEffect, useState } from "react";
+
 function MyPlaces (props: any){
-    const places = require('../data/places.json').map((place:any) => {
-        return {...place, image:require(`../assets/${place.image}`)}});
+    const [accommodations, setAccommodations] = useState([]);
+
+    const fetchAccommodations = useCallback(async () => {
+        fetch("https://devcademy.herokuapp.com/api/Accomodations")
+            .then(response => {
+                return response.json();
+            }).then(data => {
+                setAccommodations(data);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetchAccommodations();
+    }, []);
 
     const changePage = (component: JSX.Element) => {
         props.onLinkClick(component);
@@ -10,7 +24,7 @@ function MyPlaces (props: any){
 
     return (
         <div>
-            <PlaceSection places={places} onLinkClick={changePage}/>
+            <PlaceSection homes={accommodations} onLinkClick={changePage}/>
         </div>
     );
 }

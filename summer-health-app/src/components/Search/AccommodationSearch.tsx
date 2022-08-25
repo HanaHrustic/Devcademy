@@ -2,13 +2,30 @@ import classes from './AccommodationSearch.module.css'
 
 import TextField from '@mui/material/TextField';
 import { Button, Grid, InputAdornment, MenuItem } from '@mui/material';
-import { useState } from 'react';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import AdvancedSearchControls from './AdvancedSearchControls';
 import AccommodationsByLocation from '../AccommodationsByLocation';
 
+import { useCallback, useEffect, useState } from "react";
+import { StringMappingType } from 'typescript';
+
 const AccommodationSearch = (props: any) => {
-    const [destination, setDestination] = useState('');
+    const [locations, setLocations] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number}[]>([]);
+
+    const fetchLocations = useCallback(async () => {
+        fetch("https://devcademy.herokuapp.com/api/Location")
+            .then(response => {
+                return response.json();
+            }).then(data => {
+                setLocations(data);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetchLocations();
+    }, []);
+
+    const [destination, setDestination] = useState<{id: string, name: string}>();
 
     const [number, setNumber] = useState('');
     const [typeOfAccommodation, setTypeOfAccommodation] = useState('');
@@ -18,8 +35,15 @@ const AccommodationSearch = (props: any) => {
 
     const submitHandler = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log(destination, checkIn, checkOut, number, typeOfAccommodation);
-        props.onLinkClick(<AccommodationsByLocation destination={destination}/>);
+        props.onLinkClick(<AccommodationsByLocation destination={destination!} onLinkClick={changePage}/>);
+    }
+
+    const changePage = (component: JSX.Element) => {
+        props.onLinkClick(component);
+    }
+
+    const chooseLocation = (id: string) => {
+        setDestination(locations.find(location => location.id === id));
     }
 
     return (
@@ -28,15 +52,15 @@ const AccommodationSearch = (props: any) => {
                 <Grid item>
                     <TextField className={classes["accommodation-select"]} select label="Where are you going?" value={destination} 
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                            setDestination(event.target.value);
+                            chooseLocation(event.target.value);
                         }} 
                         InputProps={{
                             startAdornment: <InputAdornment position="start"><DirectionsCarIcon/></InputAdornment>,
                         }}
                     >
-                        <MenuItem value={"London"}>London</MenuItem>
-                        <MenuItem value={"New York"}>New York</MenuItem>
-                        <MenuItem value={"Mýkonos City"}>Mýkonos City</MenuItem>
+                        {locations.map((location) => (
+                            <MenuItem key={location.id} value={location.id}>{location?.name}</MenuItem>))
+                        }
                     </TextField>
                 </Grid>
                 <Grid item>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import classes from './AdvancedSearch.module.css'
 import AdvancedSearchControls from "./AdvancedSearchControls";
 
-const AdvancedSearch = () => {
+const AdvancedSearch = (props: any) => {
     const [number, setNumber] = useState('');
     const [typeOfAccommodation, setTypeOfAccommodation] = useState('');
 
@@ -13,7 +13,7 @@ const AdvancedSearch = () => {
     
     const submitHandler = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log(checkIn, checkOut, number, typeOfAccommodation);
+        props.formResult(typeOfAccommodation)
     }
 
     return(

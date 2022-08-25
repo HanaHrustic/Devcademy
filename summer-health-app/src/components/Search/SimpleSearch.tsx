@@ -1,18 +1,30 @@
 import { Grid, Button, InputAdornment } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import { useState } from "react";
 import MenuItem from '@mui/material/MenuItem';
-
-
+import { useCallback, useEffect, useState } from "react";
 import classes from './SimpleSearch.module.css'
 
-const SimpleSearch = () => {
+const SimpleSearch = (props: any) => {
+    const [locations, setLocations] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number}[]>([]);
     const [destination, setDestination] = useState('');
+
+    const fetchLocations = useCallback(async () => {
+        fetch("https://devcademy.herokuapp.com/api/Location")
+            .then(response => {
+                return response.json();
+            }).then(data => {
+                setLocations(data);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetchLocations();
+    }, []);
 
     const submitHandler = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log(destination);
+        props.formResult(destination)
     }
 
     return (
@@ -28,8 +40,9 @@ const SimpleSearch = () => {
                                 startAdornment: <InputAdornment position="start"><DirectionsCarIcon/></InputAdornment>,
                             }}
                         >
-                            <MenuItem value={1}>London</MenuItem>
-                            <MenuItem value={2}>New York</MenuItem>
+                            {locations.map((location) => (
+                            <MenuItem key={location.id} value={location.name}>{location?.name}</MenuItem>))
+                        }
                         </TextField>
                     </Grid>
                     <Grid item>

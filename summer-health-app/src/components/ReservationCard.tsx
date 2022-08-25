@@ -1,39 +1,48 @@
 import classes from './ReservationCard.module.css'
 
-import { Grid } from "@mui/material";
-import StarRateIcon from '@mui/icons-material/StarRate';
-import { amber } from '@mui/material/colors';
+import { Grid, Rating } from "@mui/material";
+import { useCallback, useEffect, useState } from "react";
 
-const ReservationCard: React.FC<{accommodation: {title: string, subtitle: string, description: string, type: string, categorization: number, personCount: number, imageUrl: string, freeCancelation: boolean, price: number, location: string, postalCode: string}}> = (props) => {
-    const stars = [];
-    for(let i = 0; i < props.accommodation.categorization; i++) {
-        stars.push(<StarRateIcon sx={{ color: amber[400] }}/>);
-    }
+const ReservationCard: React.FC<{id: string}> = (props) => {
+    const [accommodation, setAccommodation] = useState<{id: string, title: string, subtitle: string, description: string, shortDescription: string, type: string, categorization: number, personCount: number | null, imageUrl: string, freeCancelation: boolean, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}, capacity: number}>();
+
+    const fetchAccommodation = useCallback(async () => {
+        fetch("https://devcademy.herokuapp.com/api/Accomodations/" + props.id)
+            .then(response => {
+                return response.json();
+            }).then(data => {
+                setAccommodation(data);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetchAccommodation();
+    }, []);
     
     return (
         <Grid className={classes["reservation-card"]} container direction="row" justifyContent="flex-start" alignItems="flex-start">
             <Grid item className={classes["reservation-image"]}>
-                <img src={require("../assets/PoseidonHotelSuitesIcon.png")}/>
+                <img className={classes["reservation-img"]} src={accommodation?.imageUrl}/>
             </Grid>
             <Grid item className={classes["reservation-info"]}>
                 <Grid container direction="column" justifyContent="flex-start" alignItems="baseline">
                     <Grid item>
-                        <h3>{props.accommodation.title}</h3>
+                        <h3>{accommodation?.title}</h3>
                     </Grid>
                     <Grid item>
-                        {stars}
+                        <Rating value={accommodation?.categorization ?? 0} readOnly />
                     </Grid>
                     <Grid item>
-                        <p>{props.accommodation.type}</p>
+                        <p>{accommodation?.type}</p>
                     </Grid>
                     <Grid item>
-                        <p>{props.accommodation.location}</p>
+                        <p>{accommodation?.location?.name}</p>
                     </Grid>
                     <Grid item>
-                        <p>{props.accommodation.postalCode}</p>
+                        <p>{accommodation?.location?.postalCode}</p>
                     </Grid>
                     <Grid item>
-                        <p>EUR {props.accommodation.price} per night</p>
+                        <p>EUR {accommodation?.price} per night</p>
                     </Grid>
                 </Grid>
             </Grid>

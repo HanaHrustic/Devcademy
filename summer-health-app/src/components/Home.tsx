@@ -1,22 +1,34 @@
-import AccommodationDetails from "./AccommodationDetails";
+import { useCallback, useEffect, useState } from "react";
 import AccommodationSection from "./AccommodationSection";
 import CitySection from "./CitySection";
 import Header from "./Header";
 
 const Home = (props: any) => {
-    const cities = require('../data/cities.json')
-        .map((city: {name: string, count: string, imageUrl: string}) => 
-        {
-        return {...city, imageUrl:require(`../assets/${city.imageUrl}`)};
-        }
-    );
-    const homes = require('../data/homes.json')
-        .map((home: {title: string, location: string, price: number, categorization: number, imageUrl: string}) => 
-            {
-            return {...home, imageUrl:require(`../assets/${home.imageUrl}`)};
-            }
-        );
-    const accommodations = require('../data/accommodations.json')
+    const [locations, setLocations] = useState([]);
+    const [accommodations, setAccommodations] = useState([]);
+
+    const fetchLocations = useCallback(async () => {
+        fetch("https://devcademy.herokuapp.com/api/Location")
+            .then(response => {
+                return response.json();
+            }).then(data => {
+                setLocations(data);
+            });
+    }, []);
+
+    const fetchAccommodations = useCallback(async () => {
+        fetch("https://devcademy.herokuapp.com/api/Accomodations")
+            .then(response => {
+                return response.json();
+            }).then(data => {
+                setAccommodations(data);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetchLocations();
+        fetchAccommodations();
+    }, []);
 
     const changePage = (component: JSX.Element) => {
         props.onLinkClick(component);
@@ -25,9 +37,8 @@ const Home = (props: any) => {
     return(
         <div>
             <Header onLinkClick={changePage}/>
-            <CitySection cities={cities} onLinkClick={changePage}/>
-            <AccommodationSection homes={homes} onLinkClick={changePage}/>
-            <AccommodationDetails accommodation={accommodations[0]} onLinkClick={changePage}/>
+            <CitySection cities={locations} onLinkClick={changePage}/>
+            <AccommodationSection homes={accommodations} onLinkClick={changePage}/>
         </div>
     );
 }

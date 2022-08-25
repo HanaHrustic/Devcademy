@@ -4,13 +4,9 @@
 }
 
 .places-title{
-    color: #000000;
     font-family: 'Roboto';
     font-size: 34px;
-    font-style: normal;
     font-weight: 400;
-    letter-spacing: 0.25px;
-    line-height: 120%;
 }
 
 .places-section{

@@ -1,0 +1,10 @@
+.city-card{
+    height: 295px;
+    margin-bottom: 10px !important;
+    width: 297px;
+}
+
+.city-section{
+    gap:2%;
+    padding-top: 20px;
+}

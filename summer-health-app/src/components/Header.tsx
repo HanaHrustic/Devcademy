@@ -1,7 +1,7 @@
 import './Header.css'
 
 import Container from 'react-bootstrap/Container';
-import AccommodationSearch from './Search/AccommodationSearch';
+import AccommodationSearch from './search/AccommodationSearch';
 
 const Header = (props: any) => {
     const changePage = (component: JSX.Element) => {
