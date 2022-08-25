@@ -12,13 +12,13 @@
 
 .login{
     background-color: white;
-    width: 404px !important;
-    height: 361px;
-    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
     border-radius: 8px;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    height: 361px;
+    width: 404px !important;
 }
 
 .button{
-    width: 100%;
     background: #40E0D0;
+    width: 100%;
 }
