@@ -8,9 +8,11 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
+import { useHistory } from 'react-router-dom';
 
-const PlaceCard: React.FC<{home: {id: string, title: string, subtitle: string, description: string, shortDescription: string, type: string, categorization: number, personCount: number | null, imageUrl: string, freeCancelation: boolean, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number} | null, capacity: number}, onLinkClick(component: JSX.Element): void}> = (props) => {
+const PlaceCard: React.FC<{home: {id: string, title: string, subtitle: string, description: string, shortDescription: string, type: string, categorization: number, personCount: number | null, imageUrl: string, freeCancelation: boolean, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number} | null, capacity: number}}> = (props) => {
     const [open, setOpen] = useState(false);
+    const history = useHistory();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -29,7 +31,10 @@ const PlaceCard: React.FC<{home: {id: string, title: string, subtitle: string, d
     }
 
     function handleEdit() {
-        props.onLinkClick(<NewPlaceForm id={props.home.id}/>);
+        history.push({
+            pathname: "/my-places/new",
+            state: {id: props.home?.id}
+        })
     }
 
     return (

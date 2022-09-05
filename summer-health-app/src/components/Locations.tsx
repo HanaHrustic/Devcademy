@@ -1,15 +1,14 @@
 import { Grid } from "@mui/material";
 import SimpleSearch from "./search/SimpleSearch";
 import Container from 'react-bootstrap/Container';
-
 import { useCallback, useEffect, useState } from "react";
 import CityCard from "./CityCard";
-
+import { useHistory } from 'react-router-dom';
 import classes from './Locations.module.css'
-import AccommodationsByLocation from "./AccommodationsByLocation";
 
 function Locations (props:any){
     const [locations, setLocations] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number}[]>([]);
+    const history = useHistory();
 
     const fetchLocations = useCallback(async () => {
         fetch("https://devcademy.herokuapp.com/api/Location")
@@ -24,12 +23,11 @@ function Locations (props:any){
         fetchLocations();
     }, []);
 
-    const changePage = (component: JSX.Element) => {
-        props.onLinkClick(component);
-    }
-
     const submitHandler = (id: string) => {
-        props.onLinkClick(<AccommodationsByLocation destination={locations.find(location => location.id === id)!} onLinkClick={changePage}/>);
+        history.push({
+            pathname: "/accommodations/location?locationId=" + id,
+            state: {name: locations.find(location => location.id === id)?.name}
+        })
     }
 
     return (

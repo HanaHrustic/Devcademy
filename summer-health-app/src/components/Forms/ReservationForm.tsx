@@ -9,6 +9,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import useInput from '../hooks/use-input';
+import { useHistory } from 'react-router-dom';
 
 import { useCallback, useEffect, useState } from "react";
 
@@ -18,6 +19,8 @@ const ReservationForm: React.FC<{id: string}> = (props) => {
     const [checkOut, setCheckOut] = useState<Date | null>(null);
     const [personCount, setPersonCount] = useState(0);
     const [confirmed, setConfirmed] = useState(true);
+
+    const history = useHistory();
 
     const {
         value: name,
@@ -49,13 +52,8 @@ const ReservationForm: React.FC<{id: string}> = (props) => {
         fetchAccommodation();
     }, []);
 
-    
-
     const submitHandler = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log({email, accomodationId: props.id, checkIn, checkOut, personCount, confirmed})
-
-
         fetch("https://devcademy.herokuapp.com/api/Reservation", {
                 method: 'POST',
                 body: JSON.stringify({email, accomodationId: props.id, checkIn, checkOut, personCount, confirmed}),
@@ -63,7 +61,7 @@ const ReservationForm: React.FC<{id: string}> = (props) => {
                     'Content-Type': 'application/json'
                 }
             }).then(() => (
-                window.location.reload()
+                history.push('/accommodations/' + props.id)
             ));
     }
 

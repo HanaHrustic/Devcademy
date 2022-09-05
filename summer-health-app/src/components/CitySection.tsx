@@ -1,10 +1,10 @@
 import classes from './CitySection.module.css';
 
 import CityCard from './CityCard';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Container from 'react-bootstrap/Container';
 import Locations from './Locations';
+import { Link } from 'react-router-dom';
 
 
 const CitySection: React.FC<{cities: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}[], onLinkClick(component: JSX.Element): void}> = (props) => {
@@ -23,7 +23,7 @@ const CitySection: React.FC<{cities: {id: string, name: string, imageUrl: string
                     <h3 className={classes['popular-locations-title']}>Popular locations</h3>
                 </Grid>   
                 <Grid item>
-                    <Link className={classes['all-locations-link']} onClick={locationLinkClickHandler} underline="hover">VIEW ALL LOCATIONS</Link>
+                    <Link to='locations' className={classes['all-locations-link']}>VIEW ALL LOCATIONS</Link>
                 </Grid>
             </Grid>
             <Grid className={classes["city-row"]} container direction="row" justifyContent="flex-start" alignItems="baseline">

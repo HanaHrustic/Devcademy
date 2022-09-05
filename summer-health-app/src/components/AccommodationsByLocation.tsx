@@ -4,13 +4,16 @@ import classes from './AccommodationsByLocation.module.css'
 import AccommodationCard from './AccommodationCard';
 import AdvancedSearch from './search/AdvancedSearch';
 import { useCallback, useState, useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 
-const AccommodationByLocation = (props: {destination: {id: string, name: string}, onLinkClick(component: JSX.Element): void}) => {
+const AccommodationByLocation = () => {
     const [accommodations, setAccommodations] = useState<{id: string, title: string, type: string, categorization: number, imageUrl: string, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number}}[]>([]);
     const [typeOfAccommodation, setTypeOfAccommodation] = useState("");
+    const location = useLocation();
+    const params = useParams<{locationId: string}>();
 
     const fetchAccommodations = useCallback(async () => {
-        fetch("https://devcademy.herokuapp.com/api/Accomodations/location?locationId=" + props.destination.id)
+        fetch("https://devcademy.herokuapp.com/api/Accomodations/location?locationId=" + params.locationId)
             .then(response => {
                 return response.json();
             }).then(data => {
@@ -21,10 +24,6 @@ const AccommodationByLocation = (props: {destination: {id: string, name: string}
     useEffect(() => {
         fetchAccommodations();
     }, []);
-
-    const changePage = (component: JSX.Element) => {
-        props.onLinkClick(component);
-    }   
     
     const submitHandler = (type: string) => {
         setTypeOfAccommodation(type);
@@ -33,12 +32,12 @@ const AccommodationByLocation = (props: {destination: {id: string, name: string}
     return (
         <Container className={classes["wrapper"]}>
             <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start">
-                <h1 className={classes["title"]}>Stays in {props.destination.name}</h1>
+                <h1 className={classes["title"]}>Stays in {(location.state as any).name}</h1>
                 <p className={classes["subtitle"]}>{accommodations.length} {accommodations.length > 1 ? "properties" : "property"} </p>
                 <AdvancedSearch formResult={submitHandler}/>
                 <Grid container direction="row" justifyContent="flex-start" alignItems="baseline">
                     {accommodations.filter(home => typeOfAccommodation === "" || home.type === typeOfAccommodation).map((accommodation) => (
-                        <AccommodationCard key={accommodation.id} home={accommodation} onLinkClick={changePage}/>
+                        <AccommodationCard key={accommodation.id} home={accommodation}/>
                     ))}
                 </Grid>
             </Grid>

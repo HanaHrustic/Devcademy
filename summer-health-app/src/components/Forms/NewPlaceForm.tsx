@@ -4,69 +4,72 @@ import { Button, Container } from 'react-bootstrap';
 import TextField from '@mui/material/TextField';
 import { useCallback, useEffect, useState } from "react";
 import useInput from '../hooks/use-input';
+import { useHistory, useLocation } from 'react-router-dom';
 
-const NewPlaceForm: React.FC<{id: string}> = (props) => {
+const NewPlaceForm = () => {
+    const [description, setDescription] = useState('');
+    const [categorization, setCategorization] = useState <number | null>(1);
+    const [subtitle, setSubtitle] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const [freeCancellation, setFreeCancellation] = useState<boolean>();
+    const [personCount, setPersonCount] = useState(0);
+    const [location, setLocation] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number} | null>(null);
+    const [postalCode, setPostalCode] = useState('');
+    const [locationID, setLocationID] = useState('');
+    const [locationsFromDatabase, setLocationsFromDatabase] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number}[]>([]);
+
+    const locations = useLocation();
+    const history = useHistory();
+
     const {
       value: title,
       isValid: titleIsValid,
       hasError: titleInputHasError,
       valueChangeHandler: titleChangeHandler,
-      inputBlurHandler: titleBlurHandler,
-      reset: resetTitleInput
+      inputBlurHandler: titleBlurHandler
     } = useInput("", (value: string) => value.trim() !== "" && value.length <= 100);
-
-    const [subtitle, setSubtitle] = useState('');
 
     const {
         value: shortDescription,
         isValid: shortDescriptionIsValid,
         hasError: shortDescriptionInputHasError,
         valueChangeHandler: shortDescriptionChangeHandler,
-        inputBlurHandler: shortDescriptionBlurHandler,
-        reset: resetShortDescriptionInput
+        inputBlurHandler: shortDescriptionBlurHandler
     } = useInput("", (value: string) => value.length <= 200);
-
-    const [description, setDescription] = useState('');
 
     const {
         value: type,
         isValid: typeIsValid,
         hasError: typeInputHasError,
         valueChangeHandler: typeChangeHandler,
-        inputBlurHandler: typeBlurHandler,
-        reset: resetTypeInput
+        inputBlurHandler: typeBlurHandler
     } = useInput("", (value: string) => value.trim() !== "");
-
-    const [categorization, setCategorization] = useState <number | null>(1);
 
     const {
         value: capacity,
         isValid: capacityIsValid,
         hasError: capacityInputHasError,
         valueChangeHandler: capacityChangeHandler,
-        inputBlurHandler: capacityBlurHandler,
-        reset: resetCapacityInput
+        inputBlurHandler: capacityBlurHandler
     } = useInput(0, (value: number) => value > 0);
-
-    const [imageUrl, setImageUrl] = useState('');
-
-    const [freeCancellation, setFreeCancellation] = useState<boolean>();
 
     const {
         value: price,
         isValid: priceIsValid,
         hasError: priceInputHasError,
         valueChangeHandler: priceChangeHandler,
-        inputBlurHandler: priceBlurHandler,
-        reset: resetPriceInput
+        inputBlurHandler: priceBlurHandler
     } = useInput(0, (value: number) => value > 0);
-    
-    const [personCount, setPersonCount] = useState(0);
-    const [location, setLocation] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number} | null>(null);
-    const [postalCode, setPostalCode] = useState('');
-    const [locationID, setLocationID] = useState('');
 
-    const [locationsFromDatabase, setLocationsFromDatabase] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number}[]>([]);
+    const isFormValid = () => {
+        return titleIsValid && shortDescriptionIsValid && typeIsValid && capacityIsValid && priceIsValid;
+    }
+
+    const chooseLocation = (id: string) => {
+        setLocationID(id);
+        setPostalCode(locationsFromDatabase.find(location => location.id === id)?.postalCode.toString() ?? "");
+        setLocation(locationsFromDatabase.find(location => location.id === id) ?? null)
+    }
 
     const fetchLocationsFromDatabase = useCallback(async () => {
         fetch("https://devcademy.herokuapp.com/api/Location")
@@ -79,10 +82,8 @@ const NewPlaceForm: React.FC<{id: string}> = (props) => {
 
     useEffect(() => {
         fetchLocationsFromDatabase();
-        if(props.id){
-            console.log(props.id);
-            
-            fetch("https://devcademy.herokuapp.com/api/Accomodations/" + props.id)
+        if((locations.state as any).id){
+            fetch("https://devcademy.herokuapp.com/api/Accomodations/" + (locations.state as any).id)
             .then(response => {
                 return response.json();
             }).then(data => {
@@ -103,29 +104,16 @@ const NewPlaceForm: React.FC<{id: string}> = (props) => {
         }
     }, []);
 
-    const chooseLocation = (id: string) => {
-        console.log(locationsFromDatabase.find(location => location.id === id));
-        setLocationID(id);
-        setPostalCode(locationsFromDatabase.find(location => location.id === id)?.postalCode.toString() ?? "");
-        setLocation(locationsFromDatabase.find(location => location.id === id) ?? null)
-    }
-
-    const isFormValid = () => {
-        return titleIsValid && shortDescriptionIsValid && typeIsValid && capacityIsValid && priceIsValid;
-    }
-
     const submitHandler = (event: any) => {
         event.preventDefault();
-        
-        console.log(title, subtitle, description, categorization, type, personCount, price, location, postalCode, imageUrl, freeCancellation);
-        fetch("https://devcademy.herokuapp.com/api/Accomodations/" + props.id, {
-            method: props.id ? 'PUT' : 'POST',
+        fetch("https://devcademy.herokuapp.com/api/Accomodations/" + (locations.state as any).id, {
+            method: (locations.state as any).id ? 'PUT' : 'POST',
             body: JSON.stringify({title, subtitle, description, shortDescription, type, categorization, personCount, imageUrl, freeCancellation, price, location: {...location}, locationID, capacity}),
             headers: {
                 'Content-Type': 'application/json'
             }
         }).then(() => (
-            window.location.reload()
+            history.push('/my-places')
         ));
     }
 

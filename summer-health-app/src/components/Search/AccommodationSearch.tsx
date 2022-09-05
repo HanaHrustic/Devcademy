@@ -5,12 +5,35 @@ import { Button, Grid, InputAdornment, MenuItem } from '@mui/material';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import AdvancedSearchControls from './AdvancedSearchControls';
 import AccommodationsByLocation from '../AccommodationsByLocation';
+import { useHistory } from 'react-router-dom';
 
 import { useCallback, useEffect, useState } from "react";
-import { StringMappingType } from 'typescript';
 
 const AccommodationSearch = (props: any) => {
     const [locations, setLocations] = useState<{id: string, name: string, imageUrl: string, postalCode: number, properties: number}[]>([]);
+    const history = useHistory();
+    const [destination, setDestination] = useState<{id: string, name: string}>();
+    const [number, setNumber] = useState('');
+    const [typeOfAccommodation, setTypeOfAccommodation] = useState('');
+    const [checkIn, setCheckIn] = useState<Date | null>(null);
+    const [checkOut, setCheckOut] = useState<Date | null>(null);
+
+    const changePage = (component: JSX.Element) => {
+        props.onLinkClick(component);
+    }
+
+    const chooseLocation = (id: string) => {
+        setDestination(locations.find(location => location.id === id));
+    }
+
+    const submitHandler = (event: React.FormEvent) => {
+        event.preventDefault();
+
+        history.push({
+            pathname: "/accommodations/location?locationId=" + destination!.id,
+            state: {name: destination!.name}
+        })
+    }
 
     const fetchLocations = useCallback(async () => {
         fetch("https://devcademy.herokuapp.com/api/Location")
@@ -24,27 +47,6 @@ const AccommodationSearch = (props: any) => {
     useEffect(() => {
         fetchLocations();
     }, []);
-
-    const [destination, setDestination] = useState<{id: string, name: string}>();
-
-    const [number, setNumber] = useState('');
-    const [typeOfAccommodation, setTypeOfAccommodation] = useState('');
-
-    const [checkIn, setCheckIn] = useState<Date | null>(null);
-    const [checkOut, setCheckOut] = useState<Date | null>(null);
-
-    const submitHandler = (event: React.FormEvent) => {
-        event.preventDefault();
-        props.onLinkClick(<AccommodationsByLocation destination={destination!} onLinkClick={changePage}/>);
-    }
-
-    const changePage = (component: JSX.Element) => {
-        props.onLinkClick(component);
-    }
-
-    const chooseLocation = (id: string) => {
-        setDestination(locations.find(location => location.id === id));
-    }
 
     return (
         <form onSubmit={submitHandler}>

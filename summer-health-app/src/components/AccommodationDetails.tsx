@@ -5,15 +5,17 @@ import Container from 'react-bootstrap/Container';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Button, Rating } from '@mui/material';
-import Reservation from './Reservation';
+import { useParams, useHistory } from 'react-router-dom';
 
 import { useCallback, useEffect, useState } from "react";
 
-const AccommodationDetails: React.FC<{id: string, onLinkClick(component: JSX.Element): void}> = (props) => {
+const AccommodationDetails = (props: any) => {
     const [accommodation, setAccommodation] = useState<{id: string, title: string, subtitle: string, description: string, shortDescription: string, type: string, categorization: number, personCount: number | null, imageUrl: string, freeCancelation: boolean, price: number, location: {id: string, name: string, imageUrl: string, postalCode: number, properties: number} | null, capacity: number}>();
-    
+    const history = useHistory();
+    const params = useParams<{accommodationId: string}>();
+
     const fetchAccommodation = useCallback(async () => {
-        fetch("https://devcademy.herokuapp.com/api/Accomodations/" + props.id)
+        fetch("https://devcademy.herokuapp.com/api/Accomodations/" + params.accommodationId)
             .then(response => {
                 return response.json();
             }).then(data => {
@@ -22,7 +24,10 @@ const AccommodationDetails: React.FC<{id: string, onLinkClick(component: JSX.Ele
     }, []);
     
     const bookingLinkClickHandler = () => {
-        props.onLinkClick(<Reservation id={props.id}/>);
+        history.push({
+            pathname: "/reservation",
+            state: {id: accommodation?.id}
+        })
     }
 
     useEffect(() => {
@@ -56,7 +61,7 @@ const AccommodationDetails: React.FC<{id: string, onLinkClick(component: JSX.Ele
                         </Grid>
                     </Grid>
                     <Grid item>
-                        <p>{accommodation?.description.split("\\n").map((line, index) => (<span key={index}><br/>{line}</span>))}</p>
+                        <p>{accommodation?.description}</p>
                     </Grid>
                 </Grid>
                 <Grid className={classes["accommodation-summary"]} container direction="column" justifyContent="flex-start" alignItems="baseline">
